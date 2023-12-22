@@ -1,0 +1,9 @@
+[Unit]
+Description=Change the gnome wallpapper
+
+[Service]
+ExecStart=SCRIPT_PATH
+
+[Install]
+WantedBy=multi-user.target
+ 
