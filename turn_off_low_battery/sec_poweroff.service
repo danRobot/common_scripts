@@ -1,0 +1,9 @@
+[Unit]
+Description=Turn off on low battery
+
+[Service]
+ExecStart=SCRIPT_PATH
+
+[Install]
+WantedBy=multi-user.target
+ 
