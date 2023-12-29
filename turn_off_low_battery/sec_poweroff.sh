@@ -25,7 +25,7 @@ do
         then
             poweroff;
         fi
-        level=$(cat /sys/class/power_supply/BAT0/capacity);
-        sleep 60;
     fi
+    level=$(cat /sys/class/power_supply/BAT0/capacity);
+    sleep 60;
 done
