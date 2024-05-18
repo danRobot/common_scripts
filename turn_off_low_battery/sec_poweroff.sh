@@ -13,16 +13,22 @@ do
             user_list="$(echo "$ln" | cut -d' ' -f 1)";
         done
         users=($user_list);
-        for user in ${users[@]};
-        do
-            uid=$(id -u $user);
-            bus_addr=unix:path=/run/user/$uid/bus;
-            DBUS_SESSION_BUS_ADDRESS="$bus_addr" sudo -u $user -E /usr/bin/notify-send -u critical "Bateria baja el equipo se va a apagar";
-        done  
+        status=$(cat /sys/class/power_supply/BAT0/status);
+        if [ $status = $discharge ]
+        then
+            for user in ${users[@]};
+            do
+                uid=$(id -u $user);
+                bus_addr=unix:path=/run/user/$uid/bus;
+                DBUS_SESSION_BUS_ADDRESS="$bus_addr" sudo -u $user -E /usr/bin/notify-send -u critical "Bateria baja el equipo se va a apagar";
+            done  
+        fi
         sleep 60;
         status=$(cat /sys/class/power_supply/BAT0/status);
         if [ $status = $discharge ]
         then
+            python3 SCRIPT_PATH;
+            sleep 3;
             poweroff;
         fi
     fi

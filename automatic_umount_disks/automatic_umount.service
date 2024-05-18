@@ -1,0 +1,12 @@
+[Unit]
+Description=Secure umount for external disks
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=SCRIPT_PATH
+
+[Install]
+WantedBy=halt.target reboot.target shutdown.target
+ 
