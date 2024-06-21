@@ -2,7 +2,7 @@
 
 sleep 120;
 level=$(cat /sys/class/power_supply/BAT0/capacity);
-limit=15;
+limit=16;
 discharge="Discharging";
 while true
 do

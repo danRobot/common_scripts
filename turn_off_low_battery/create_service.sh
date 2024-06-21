@@ -2,6 +2,8 @@
 
 DEST_PATH=$1;
 
+sudo apt-get install -y libnotify-bin
+
 cp sec_poweroff.sh $DEST_PATH;
 cp ../automatic_umount_disks/shtdwn_custom_script.py $DEST_PATH;
 DEST_PATH_UMOUNT=$DEST_PATH'shtdwn_custom_script.py';
