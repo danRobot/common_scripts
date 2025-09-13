@@ -1,6 +1,17 @@
 #! /bin/bash
 
+if [ -z "$1" ]; then
+    echo "❌ Error: No se proporcionó una ruta de destino."
+    echo "Uso: $0 /ruta_de_instalacion_absoluta/"
+    exit 1 # Termina el script con un código de error
+fi
+
 DEST_PATH=$1;
+
+if [ ! -d "$DEST_PATH" ]; then
+    echo "❌ Error: La ruta '$DEST_PATH' no es un directorio válido o no existe."
+    exit 1 # Termina el script con un código de error
+fi
 
 sudo apt-get install -y libnotify-bin
 
